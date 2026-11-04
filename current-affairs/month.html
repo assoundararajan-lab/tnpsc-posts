@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ta">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>மாதாந்திர நடப்பு நிகழ்வுகள் | TNPSC Best Books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@800&family=Noto+Sans+Tamil:wght@400;600;700&display=swap">
+<style>
+body{margin:0;background:#fff;color:#141B33;font-family:'Noto Sans Tamil',system-ui,sans-serif;font-size:14px;line-height:1.65}
+.page{max-width:820px;margin:0 auto;padding:24px 20px 48px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:#141B33;color:#fff;border-radius:12px;padding:14px 18px}
+.bar h1{margin:0;font-family:'Baloo Thambi 2','Noto Sans Tamil',sans-serif;font-size:24px}
+.print{min-height:44px;padding:0 18px;border:none;border-radius:10px;background:#C8374A;color:#fff;font-family:inherit;font-weight:700;font-size:15px;cursor:pointer}
+h2{font-size:18px;margin:28px 0 8px;padding-bottom:6px;border-bottom:2px solid #C8374A;break-after:avoid}
+.item{margin:10px 0 14px;break-inside:avoid}
+.item h3{margin:0;font-size:15px}
+.item p{margin:2px 0}
+.en{color:#545B70}
+.gk{background:#FDF5E2;padding:6px 10px;border-radius:6px;margin-top:4px}
+ol{padding-left:22px}
+li{margin-bottom:8px;break-inside:avoid}
+.ans{font-weight:700;color:#1E6B3F}
+.foot{margin-top:30px;font-size:12px;color:#545B70;border-top:1px solid #ddd;padding-top:10px}
+@media print{.print{display:none}.bar{background:none;color:#141B33;border:2px solid #141B33}body{font-size:12pt}}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="bar"><h1 id="title">நடப்பு நிகழ்வுகள்</h1><button class="print" type="button" onclick="window.print()">PDF ஆகச் சேமி / Print</button></div>
+<p style="color:#545B70">TNPSC Best Books · tnpscbestbooks.com · TNPSC, TNUSRB, TET, RRB, SSC</p>
+<div id="out">ஏற்றுகிறது…</div>
+<div class="foot">tnpscbestbooks.com · Kaniyan books with free delivery across Tamil Nadu · WhatsApp 9994444678</div>
+</div>
+<script>
+(function(){
+const TA_M=['ஜனவரி','பிப்ரவரி','மார்ச்','ஏப்ரல்','மே','ஜூன்','ஜூலை','ஆகஸ்ட்','செப்டம்பர்','அக்டோபர்','நவம்பர்','டிசம்பர்'];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const m=new URLSearchParams(location.search).get('m')||'';
+fetch('data.json?v='+Date.now()).then(r=>r.json()).then(j=>{
+  const days=j.days.filter(d=>d.d.startsWith(m)).sort((a,b)=>a.d.localeCompare(b.d));
+  const [y,mo]=m.split('-').map(Number);
+  const t=(TA_M[mo-1]||'')+' '+(y||'')+' – நடப்பு நிகழ்வுகள்';
+  document.getElementById('title').textContent=t;document.title=t+' | TNPSC Best Books';
+  if(!days.length){document.getElementById('out').textContent='இந்த மாதத்துக்குப் பதிவுகள் இல்லை.';return}
+  let h='';
+  days.forEach(d=>{const dd=Number(d.d.slice(8));h+=`<h2>${dd} ${TA_M[mo-1]} ${y}</h2>`;
+    d.n.forEach((n,i)=>{h+=`<div class="item"><h3>${i+1}. ${esc(n.t)}</h3><p>${esc(n.s)}</p><p class="en">${esc(n.e)}</p>${n.g?`<div class="gk"><b>நிலையான பொது அறிவு:</b> ${esc(n.g)}</div>`:''}</div>`});
+  });
+  h+='<h2>வினா – விடைகள் | Practice questions</h2>';
+  days.forEach(d=>{const dd=Number(d.d.slice(8));h+=`<h3 style="margin:16px 0 4px">${dd} ${TA_M[mo-1]}</h3><ol>`;
+    d.q.forEach(q=>{h+=`<li>${esc(q.q)}<br><span class="en">${esc(q.qe)}</span><br>${q.o.map((o,i)=>'('+'ABCD'[i]+') '+esc(o)).join(' &nbsp; ')}<br><span class="ans">விடை: ${'ABCD'[q.a]}</span></li>`});
+    h+='</ol>'});
+  document.getElementById('out').innerHTML=h;
+});
+})();
+</script>
+</body>
+</html>
