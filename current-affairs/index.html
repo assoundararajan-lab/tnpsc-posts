@@ -173,6 +173,7 @@ function newsHTML(){
 }
 function quizHTML(){
   const q=byDate[cur].q;let score=0;
+  if(!q.length)return `<div class="empty">இந்த நாளுக்கு வினாடி வினா இல்லை. மற்ற நாள்களைத் தேர்ந்தெடுக்கவும்.</div>`;
   const items=q.map((x,qi)=>{const p=ans[qi];const done=p!==undefined;if(done&&p===x.a)score++;
     const opts=x.o.map((o,oi)=>{let c='opt';if(done&&oi===x.a)c+=' ok';else if(done&&oi===p)c+=' bad';return `<button type="button" class="${c}" data-q="${qi}" data-o="${oi}"><b>${KEYS[oi]}</b> ${esc(o)}</button>`}).join('');
     const fb=done?(p===x.a?'<div class="fb" style="color:#1E6B3F">சரியான விடை!</div>':`<div class="fb" style="color:#B3261E">தவறு. சரியான விடை: ${KEYS[x.a]}</div>`):'';
