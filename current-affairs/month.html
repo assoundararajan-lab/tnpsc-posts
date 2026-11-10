@@ -32,13 +32,12 @@ li{margin-bottom:8px;break-inside:avoid}
 <div id="out">ஏற்றுகிறது…</div>
 <div class="foot">tnpscbestbooks.com · Kaniyan books with free delivery across Tamil Nadu · WhatsApp 9994444678</div>
 </div>
-<script src="live.js"></script>
 <script>
 (function(){
 const TA_M=['ஜனவரி','பிப்ரவரி','மார்ச்','ஏப்ரல்','மே','ஜூன்','ஜூலை','ஆகஸ்ட்','செப்டம்பர்','அக்டோபர்','நவம்பர்','டிசம்பர்'];
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const m=new URLSearchParams(location.search).get('m')||'';
-fetch('data.json?v='+Date.now()).then(r=>r.json()).then(j=>{const top=j.days.map(d=>d.d).sort().pop();return (window.tbbLive?tbbLive(top):Promise.resolve([])).then(nd=>{j.days=j.days.concat(nd);return j})}).then(j=>{
+fetch('data.json?v='+Date.now()).then(r=>r.json()).then(j=>{
   const days=j.days.filter(d=>d.d.startsWith(m)).sort((a,b)=>a.d.localeCompare(b.d));
   const [y,mo]=m.split('-').map(Number);
   const t=(TA_M[mo-1]||'')+' '+(y||'')+' – நடப்பு நிகழ்வுகள்';

@@ -132,7 +132,6 @@ footer .wrap{padding-top:22px;padding-bottom:22px;display:flex;flex-wrap:wrap;ju
 
 <footer><div class="wrap"><span>TNPSC Best Books · SRT TRADERS · Namakkal · 9600777509</span><span>Independent bookseller of Kaniyan publications. Not affiliated with TNPSC.</span></div></footer>
 
-<script src="live.js"></script>
 <script>
 (function(){
 const TA_M=['ஜனவரி','பிப்ரவரி','மார்ச்','ஏப்ரல்','மே','ஜூன்','ஜூலை','ஆகஸ்ட்','செப்டம்பர்','அக்டோபர்','நவம்பர்','டிசம்பர்'];
@@ -213,9 +212,6 @@ document.addEventListener('click',e=>{
 fetch('data.json?v='+Date.now()).then(r=>r.json()).then(j=>{
   DATA=j;j.days.sort((a,b)=>b.d.localeCompare(a.d));dates=j.days.map(d=>d.d);j.days.forEach(d=>byDate[d.d]=d);
   const want=new URLSearchParams(location.search).get('d');setDate(byDate[want]?want:dates[0]);
-  if(window.tbbLive)tbbLive(dates[0]).then(nd=>{if(!nd.length)return;const top=dates[0],stay=cur!==top||byDate[want];
-    nd.forEach(d=>{if(!byDate[d.d]){j.days.push(d);byDate[d.d]=d}});j.days.sort((a,b)=>b.d.localeCompare(a.d));dates=j.days.map(d=>d.d);
-    setDate(stay?cur:dates[0]);});
 }).catch(()=>{$('#main').innerHTML='<div class="empty">செய்திகளை ஏற்ற முடியவில்லை. பக்கத்தைப் புதுப்பிக்கவும்.</div>'});
 })();
 </script>
