@@ -158,6 +158,8 @@ try{cart=JSON.parse(localStorage.getItem('tbbCart')||'{}')||{}}catch(e){cart={}}
 function save(){try{localStorage.setItem('tbbCart',JSON.stringify(cart))}catch(e){}}
 function rs(v){return '₹'+v.toLocaleString('en-IN',{maximumFractionDigits:2})}
 function wa(t){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
+var BASE=location.href.split('?')[0].split('#')[0];
+function link(c){var a=[];for(var i in c)a.push(P[i].id.slice(0,8)+'-'+c[i]);return BASE+'?cart='+a.join('.')}
 function sum(){var n=0,t=0;for(var i in cart){if(!P[i]){delete cart[i];continue}n+=cart[i];t+=cart[i]*P[i].p}return{n:n,t:t}}
 function paint(){
   var s=sum();$('cnt').textContent=s.n;$('bar').hidden=!s.n;document.body.classList.toggle('has',!!s.n);
@@ -170,7 +172,7 @@ function open(){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open',''
 grid.addEventListener('click',function(e){
   var c=e.target.closest('.card');if(!c)return;var i=c.dataset.i,p=P[i];
   if(e.target.closest('.add')){cart[i]=(cart[i]||0)+1;save();paint()}
-  else if(e.target.closest('.wa1')){e.preventDefault();location.href=wa('வணக்கம்! இந்தப் புத்தகத்தை ஆர்டர் செய்ய விரும்புகிறேன்: '+p.n+' ('+rs(p.p)+')\n'+p.u)}
+  else if(e.target.closest('.wa1')){e.preventDefault();var one={};one[i]=1;location.href=wa('வணக்கம்! இந்தப் புத்தகத்தை ஆர்டர் செய்ய விரும்புகிறேன்: '+p.n+' ('+rs(p.p)+')\n'+p.u+'\nஆன்லைனில் செலுத்த: '+link(one))}
 });
 $('lines').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var i=b.dataset.i;cart[i]=(cart[i]||0)+Number(b.dataset.d);if(cart[i]<=0)delete cart[i];save();paint()});
 $('cartBtn').onclick=open;$('barGo').onclick=open;$('close').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open')};
@@ -181,6 +183,7 @@ $('form').addEventListener('submit',function(e){
   for(var i in cart){t+=(j++)+'. '+P[i].n+' × '+cart[i]+' = '+rs(P[i].p*cart[i])+'\n'}
   t+='மொத்தம்: '+rs(s.t);var nm=$('nm').value.trim(),ad=$('ad').value.trim();
   if(nm)t+='\nபெயர்: '+nm;if(ad)t+='\nமுகவரி: '+ad;
+  t+='\nஆன்லைனில் செலுத்த (UPI/Card): '+link(cart);
   location.href=wa(t);
 });
 function filter(){
@@ -207,6 +210,9 @@ $('payOnline').onclick=function(){
   .catch(function(){b.disabled=false;b.textContent='ஆன்லைனில் பணம் செலுத்து (UPI / Card) →';$('payErr').textContent='இணைப்பில் சிக்கல். மீண்டும் முயலவும் அல்லது கீழே WhatsApp-ல் ஆர்டர் செய்யவும்.'});
 };
 paint();
+(function(){var q=new URLSearchParams(location.search).get('cart');if(!q)return;var c={};
+  q.split('.').forEach(function(x){var m=x.split('-'),k=m[0],n=Math.max(1,Math.min(20,parseInt(m[1],10)||1));P.forEach(function(p){if(p.id.slice(0,8)===k)c[p.i]=n})});
+  if(Object.keys(c).length){cart=c;save();paint();open();try{history.replaceState(null,'',BASE)}catch(e){}}})();
 })();
 </script>
 </body>

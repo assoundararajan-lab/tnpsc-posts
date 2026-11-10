@@ -81,3 +81,7 @@ out = (tpl.replace("{{CHIPS}}", chips).replace("{{CARDS}}", "\n".join(cards))
        .replace("{{WA}}", WA).replace("{{PHONE}}", PHONE).replace("{{COUNT}}", str(len(items))))
 open(OUT, "w").write(out)
 print("built", len(items), "products,", len(out), "bytes")
+
+pl = open(__file__.replace("build.py", "paylink-template.html")).read().replace("{{DATA}}", data)
+open(OUT.replace("index.html", "paylink.html"), "w").write(pl)
+print("built paylink.html")
