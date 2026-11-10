@@ -85,6 +85,9 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 .f input,.f textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font:inherit;color:var(--ink)}
 .note{font-size:12px;color:var(--ink2);margin:8px 0 12px}
 .big{width:100%;min-height:52px;border:none;border-radius:12px;background:var(--wa);color:#fff;font-weight:800;font-size:16px}
+.pay1{background:var(--red);margin-top:4px}.pay1[disabled]{opacity:.7}
+.or{text-align:center;font-size:13px;color:var(--ink2);margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px}
+#payErr:empty{display:none}#payErr{color:var(--red)}
 .ft{background:var(--ink);color:#C9CCD6;font-size:13px;padding:24px 16px 130px}
 .ft .in{max-width:1200px;margin:0 auto;display:grid;gap:6px}
 .ft b{color:#fff}
@@ -134,6 +137,9 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 <div class="db">
 <div id="lines"></div>
 <div class="tot"><span>மொத்தம்</span><span id="tot">₹0</span></div>
+<button class="big pay1" type="button" id="payOnline">ஆன்லைனில் பணம் செலுத்து (UPI / Card) →</button>
+<p class="note" id="payErr" role="alert"></p>
+<p class="or">அல்லது WhatsApp-ல் ஆர்டர் செய்யுங்கள்</p>
 <form class="f" id="form">
 <label for="nm">பெயர்</label><input id="nm" autocomplete="name" placeholder="உங்கள் பெயர்">
 <label for="ad">முகவரி & பின்கோடு</label><textarea id="ad" rows="3" autocomplete="street-address" placeholder="கதவு எண், தெரு, ஊர், மாவட்டம், பின்கோடு"></textarea>
@@ -188,6 +194,18 @@ $('sort').addEventListener('change',function(){
   var v=this.value,f={pop:function(a,b){return a.dataset.i-b.dataset.i},lo:function(a,b){return a.dataset.p-b.dataset.p},hi:function(a,b){return b.dataset.p-a.dataset.p},off:function(a,b){return b.dataset.o-a.dataset.o}}[v];
   cards.slice().sort(f).forEach(function(c){grid.appendChild(c)});
 });
+var API='https://www.wixapis.com',CID='2eb49247-2b3b-44dd-9e28-65fd8560b7c7',STORES='215238eb-22a5-4c36-9e7b-e7c08025e04e';
+function wx(path,body,tk){return fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json',Authorization:tk||''},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text()}).then(function(x){return x?JSON.parse(x):{}})}
+$('payOnline').onclick=function(){
+  var s=sum(),b=this;if(!s.n)return;b.disabled=true;b.textContent='பாதுகாப்பான பணம் செலுத்தும் பக்கம் திறக்கிறது…';$('payErr').textContent='';
+  var items=[];for(var i in cart)items.push({quantity:cart[i],catalogReference:{catalogItemId:P[i].id,appId:STORES}});
+  var back=location.href.split('?')[0].split('#')[0],tk;
+  wx('/oauth2/token',{clientId:CID,grantType:'anonymous'}).then(function(j){tk=j.access_token;return wx('/ecom/v2/carts/current/add-line-items',{catalogItems:items},tk)})
+  .then(function(){return wx('/ecom/v1/carts/current/create-checkout',{channelType:'WEB'},tk)})
+  .then(function(c){if(!c.checkoutId)throw new Error('no checkout');return wx('/headless/v1/redirect-session',{ecomCheckout:{checkoutId:c.checkoutId},callbacks:{postFlowUrl:back,thankYouPageUrl:back}},tk)})
+  .then(function(r){var u=r.redirectSession&&r.redirectSession.fullUrl;if(!u)throw new Error('no url');location.href=u})
+  .catch(function(){b.disabled=false;b.textContent='ஆன்லைனில் பணம் செலுத்து (UPI / Card) →';$('payErr').textContent='இணைப்பில் சிக்கல். மீண்டும் முயலவும் அல்லது கீழே WhatsApp-ல் ஆர்டர் செய்யவும்.'});
+};
 paint();
 })();
 </script>

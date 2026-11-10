@@ -56,7 +56,7 @@ for i, p in enumerate(items):
     rib = (p.get("ribbon") or {}).get("name", "")
     url = p["url"]["url"]
     c = cats_for(p["name"])
-    prods.append({"i": i, "n": p["name"], "p": price, "u": url})
+    prods.append({"i": i, "n": p["name"], "p": price, "u": url, "id": p["id"]})
     e = html.escape
     lazy = 'loading="lazy" decoding="async"' if i >= 4 else ('fetchpriority="high"' if i < 2 else "")
     im = p["img"]["id"]
