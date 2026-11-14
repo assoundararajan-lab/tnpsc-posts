@@ -136,7 +136,7 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 <div class="bar" id="bar" hidden><div class="in"><div class="t"><span id="barN">0 புத்தகம்</span><b id="barT">₹0</b></div><button class="go" type="button" id="barGo">பணம் செலுத்த →</button></div></div>
 
 <dialog id="dlg" aria-labelledby="dlgT">
-<div class="dh"><h2 id="dlgT">உங்கள் கார்ட்</h2><button class="x" type="button" id="close" aria-label="Close">×</button></div>
+<div class="dh"><h2 id="dlgT">உங்கள் கூடை</h2><button class="x" type="button" id="close" aria-label="Close">×</button></div>
 <div class="db">
 <div id="lines"></div>
 <div class="tot"><span>மொத்தம்</span><span id="tot">₹0</span></div>
@@ -161,9 +161,9 @@ function sum(){var n=0,t=0;for(var i in cart){if(!P[i]){delete cart[i];continue}
 function paint(){
   var s=sum();$('cnt').textContent=s.n;$('bar').hidden=!s.n;document.body.classList.toggle('has',!!s.n);
   $('barN').textContent=s.n+' புத்தகம்';$('barT').textContent=rs(s.t);$('tot').textContent=rs(s.t);
-  cards.forEach(function(c){var b=c.querySelector('.add');if(!b)return;var q=cart[c.dataset.i];b.classList.toggle('done',!!q);b.textContent=q?'✓ கார்ட்டில் ('+q+')':'கார்ட்டில் சேர் +'});
+  cards.forEach(function(c){var b=c.querySelector('.add');if(!b)return;var q=cart[c.dataset.i];b.classList.toggle('done',!!q);b.textContent=q?'✓ கூடையில் ('+q+')':'கூடையில் சேர் +'});
   var h='';for(var i in cart){var p=P[i];h+='<div class="li"><div class="n">'+p.n.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})+'<b>'+rs(p.p*cart[i])+'</b></div><div class="qty"><button type="button" data-d="-1" data-i="'+i+'" aria-label="குறை">−</button><span>'+cart[i]+'</span><button type="button" data-d="1" data-i="'+i+'" aria-label="கூட்டு">+</button></div></div>'}
-  $('lines').innerHTML=h||'<p class="note">கார்ட் காலியாக உள்ளது.</p>';
+  $('lines').innerHTML=h||'<p class="note">கூடை காலியாக உள்ளது.</p>';
 }
 function open(){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
 var API='https://www.wixapis.com',CID='2eb49247-2b3b-44dd-9e28-65fd8560b7c7',STORES='215238eb-22a5-4c36-9e7b-e7c08025e04e';
