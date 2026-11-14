@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TNPSC Best Books Shop – Kaniyan TNPSC, TNUSRB, TET Books | WhatsApp Order</title>
-<meta name="description" content="Kaniyan TNPSC Group 4, Group 2/2A, Group 1, TNUSRB SI & Police, TET, Railway books in Tamil medium. Order on WhatsApp 9994444678. Free delivery across Tamil Nadu.">
+<title>TNPSC Best Books Shop – Kaniyan TNPSC, TNUSRB, TET Books | Buy Online – UPI / Card</title>
+<meta name="description" content="Kaniyan TNPSC Group 4, Group 2/2A, Group 1, TNUSRB SI & Police, TET, Railway books in Tamil medium. Buy online with UPI / Card. Free delivery across Tamil Nadu.">
 <meta name="theme-color" content="#141B33">
 <link rel="canonical" href="https://assoundararajan-lab.github.io/tnpsc-posts/shop/">
 <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
 <meta property="og:title" content="TNPSC Best Books – Kaniyan Books Shop">
-<meta property="og:description" content="TNPSC, TNUSRB, TET books in Tamil medium. Order on WhatsApp. Free delivery across Tamil Nadu.">
+<meta property="og:description" content="TNPSC, TNUSRB, TET books in Tamil medium. Buy online with UPI / Card. Free delivery across Tamil Nadu.">
 <style>
 :root{--ink:#141B33;--ink2:#545B70;--red:#C8374A;--wa:#16784A;--bg:#F6F4EF;--card:#fff;--line:#E3DFD5;--cream:#FDF5E2}
 *{box-sizing:border-box}
@@ -52,10 +52,10 @@ button{font:inherit;cursor:pointer}
 .pr{display:flex;align-items:baseline;gap:6px;margin-bottom:8px}
 .pr b{font-size:17px}
 .pr s{font-size:12.5px;color:var(--ink2)}
-.add,.wa1{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;text-align:center;padding:0 6px}
-.add{background:var(--ink);color:#fff;border:none;margin-top:auto}
-.add.done{background:var(--wa)}
-.wa1{margin-top:6px;border:1.5px solid var(--wa);color:var(--wa);background:#fff}
+.buy,.add{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;text-align:center;padding:0 6px}
+.buy{background:var(--red);color:#fff;border:none;margin-top:auto}.buy[disabled]{opacity:.7}
+.add{margin-top:6px;border:1.5px solid var(--ink);color:var(--ink);background:#fff}
+.add.done{background:var(--wa);border-color:var(--wa);color:#fff}
 .pay{display:block;text-align:center;font-size:12px;color:var(--ink2);padding:8px 0 2px}
 .oos{margin:auto 0 0;text-align:center;color:var(--red);font-weight:700}
 .empty{padding:40px 0;text-align:center;color:var(--ink2)}
@@ -63,9 +63,9 @@ button{font:inherit;cursor:pointer}
 .bar .in{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px}
 .bar .t{flex:1;font-size:13px;color:var(--ink2);line-height:1.3}
 .bar .t b{display:block;color:var(--ink);font-size:17px}
-.go{min-height:48px;padding:0 18px;border:none;border-radius:10px;background:var(--wa);color:#fff;font-weight:800;font-size:15px}
-.fab{position:fixed;right:16px;bottom:16px;z-index:25;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.fab svg{width:30px;height:30px;fill:#fff}
+.go{min-height:48px;padding:0 18px;border:none;border-radius:10px;background:var(--red);color:#fff;font-weight:800;font-size:15px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:25;height:48px;padding:0 16px 0 12px;border-radius:999px;background:var(--wa);color:#fff;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fab svg{width:24px;height:24px;fill:#fff}
 body.has .fab{display:none}
 dialog{border:none;padding:0;width:min(560px,100%);max-height:92vh;border-radius:16px 16px 0 0;margin:auto auto 0;color:var(--ink)}
 @media(min-width:640px){dialog{border-radius:16px;margin:auto}}
@@ -88,12 +88,15 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 .pay1{background:var(--red);margin-top:4px}.pay1[disabled]{opacity:.7}
 .or{text-align:center;font-size:13px;color:var(--ink2);margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px}
 #payErr:empty{display:none}#payErr{color:var(--red)}
+.ok{position:fixed;left:50%;top:70px;transform:translateX(-50%);z-index:40;width:min(520px,calc(100% - 24px));background:var(--wa);color:#fff;border-radius:12px;padding:14px 16px;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.ok button{float:right;background:none;border:none;color:#fff;font-size:20px;line-height:1}
+.err1{font-size:12px;color:var(--red);margin:4px 0 0;text-align:center}
 .ft{background:var(--ink);color:#C9CCD6;font-size:13px;padding:24px 16px 130px}
 .ft .in{max-width:1200px;margin:0 auto;display:grid;gap:6px}
 .ft b{color:#fff}
 .ft a{color:#fff}
 .logo small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(max-width:380px){.hd .in{gap:6px;padding:8px 12px}.logo{font-size:16px}.logo small{display:none}.hb span:not(.cnt){display:none}.hb{padding:0 10px}.wrap{padding:0 12px}.intro h1{font-size:17px}.grid{gap:8px}.card{padding:6px}.add,.wa1{font-size:12px;min-height:40px}.pay{font-size:11px}}
+@media(max-width:380px){.hd .in{gap:6px;padding:8px 12px}.logo{font-size:16px}.logo small{display:none}.hb span:not(.cnt){display:none}.hb{padding:0 10px}.wrap{padding:0 12px}.intro h1{font-size:17px}.grid{gap:8px}.card{padding:6px}.buy,.add{font-size:12px;min-height:40px}.pay{font-size:11px}}
 :focus-visible{outline:3px solid #F2B84B;outline-offset:2px}
 </style>
 <script type="application/ld+json">{{JSONLD}}</script>
@@ -107,8 +110,8 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 
 <main class="wrap">
 <section class="intro">
-<h1>TNPSC, TNUSRB, TET புத்தகங்கள் – WhatsApp-ல் எளிதாக ஆர்டர் செய்யுங்கள்</h1>
-<ul class="trust"><li>✓ ஒரிஜினல் Kaniyan புத்தகங்கள்</li><li>✓ தமிழ்நாடு முழுவதும் இலவச டெலிவரி</li><li>✓ WhatsApp ஆர்டர் உதவி</li></ul>
+<h1>TNPSC, TNUSRB, TET புத்தகங்கள் – ஆன்லைனில் எளிதாக வாங்குங்கள்</h1>
+<ul class="trust"><li>✓ ஒரிஜினல் Kaniyan புத்தகங்கள்</li><li>✓ தமிழ்நாடு முழுவதும் இலவச டெலிவரி</li><li>✓ UPI / Card பாதுகாப்பான பணம் செலுத்துதல்</li><li>✓ 1–3 நாளில் அனுப்புகிறோம்</li></ul>
 </section>
 <div class="tools">
 <div class="row"><input class="q" id="q" type="search" placeholder="புத்தகம் தேடுக…" aria-label="Search books" autocomplete="off">
@@ -119,7 +122,7 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 <div class="grid" id="grid">
 {{CARDS}}
 </div>
-<p class="empty" id="empty" hidden>புத்தகம் கிடைக்கவில்லை. WhatsApp-ல் கேளுங்கள் – நாங்கள் உதவுவோம்.</p>
+<p class="empty" id="empty" hidden>புத்தகம் கிடைக்கவில்லை. கீழே உள்ள WhatsApp பட்டனில் கேளுங்கள் – நாங்கள் உதவுவோம்.</p>
 </main>
 
 <footer class="ft"><div class="in">
@@ -128,9 +131,9 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 <span><a href="https://www.tnpscbestbooks.com/">tnpscbestbooks.com</a> · <a href="../current-affairs/">தினசரி நடப்பு நிகழ்வுகள்</a></span>
 </div></footer>
 
-<a class="fab" href="https://wa.me/{{WA}}?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D!%20%E0%AE%AA%E0%AF%81%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%95%E0%AE%AE%E0%AF%8D%20%E0%AE%AA%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF%20%E0%AE%95%E0%AF%87%E0%AE%9F%E0%AF%8D%E0%AE%95%20%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D." aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></a>
+<a class="fab" id="fab" href="https://wa.me/{{WA}}" aria-label="WhatsApp-ல் சந்தேகம் கேட்க"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg><span>சந்தேகமா?</span></a>
 
-<div class="bar" id="bar" hidden><div class="in"><div class="t"><span id="barN">0 புத்தகம்</span><b id="barT">₹0</b></div><button class="go" type="button" id="barGo">ஆர்டர் செய்ய →</button></div></div>
+<div class="bar" id="bar" hidden><div class="in"><div class="t"><span id="barN">0 புத்தகம்</span><b id="barT">₹0</b></div><button class="go" type="button" id="barGo">பணம் செலுத்த →</button></div></div>
 
 <dialog id="dlg" aria-labelledby="dlgT">
 <div class="dh"><h2 id="dlgT">உங்கள் கார்ட்</h2><button class="x" type="button" id="close" aria-label="Close">×</button></div>
@@ -139,13 +142,7 @@ dialog::backdrop{background:rgba(20,27,51,.55)}
 <div class="tot"><span>மொத்தம்</span><span id="tot">₹0</span></div>
 <button class="big pay1" type="button" id="payOnline">ஆன்லைனில் பணம் செலுத்து (UPI / Card) →</button>
 <p class="note" id="payErr" role="alert"></p>
-<p class="or">அல்லது WhatsApp-ல் ஆர்டர் செய்யுங்கள்</p>
-<form class="f" id="form">
-<label for="nm">பெயர்</label><input id="nm" autocomplete="name" placeholder="உங்கள் பெயர்">
-<label for="ad">முகவரி & பின்கோடு</label><textarea id="ad" rows="3" autocomplete="street-address" placeholder="கதவு எண், தெரு, ஊர், மாவட்டம், பின்கோடு"></textarea>
-<p class="note">ஆர்டர் விவரம் WhatsApp-ல் திறக்கும். அனுப்பியதும் பணம் செலுத்தும் விவரங்களை நாங்கள் அனுப்புவோம்.</p>
-<button class="big" type="submit">WhatsApp-ல் ஆர்டர் அனுப்பு</button>
-</form>
+<p class="note">பணம் செலுத்தும் பக்கத்தில் உங்கள் பெயர், முகவரி, போன் நம்பரை உள்ளிடுங்கள். பணம் செலுத்தியதும் ஆர்டர் உறுதியாகி, 1–3 நாளில் புத்தகம் அனுப்பப்படும்.</p>
 </div>
 </dialog>
 
@@ -160,7 +157,6 @@ function rs(v){return '₹'+v.toLocaleString('en-IN',{maximumFractionDigits:2})}
 function wa(t){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t)}
 var BASE=location.href.split('?')[0].split('#')[0];
 var K='TBB#2026srt';function fnv(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0}return ('00000'+h.toString(36)).slice(-6)}function xr(s){var o='';for(var i=0;i<s.length;i++)o+=String.fromCharCode(s.charCodeAt(i)^K.charCodeAt(i%K.length));return o}function enc(s){return fnv(s+K)+btoa(xr(s)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}function dec(t){try{var c=t.slice(0,6),b=t.slice(6).replace(/-/g,'+').replace(/_/g,'/');var s=xr(atob(b));return fnv(s+K)===c?s:null}catch(e){return null}}
-function link(c){var a=[];for(var i in c)a.push(P[i].id.slice(0,8)+'-'+c[i]);return 'https://shop.tnpscbestbooks.com/order.html?o='+enc(a.join('.'))}
 function sum(){var n=0,t=0;for(var i in cart){if(!P[i]){delete cart[i];continue}n+=cart[i];t+=cart[i]*P[i].p}return{n:n,t:t}}
 function paint(){
   var s=sum();$('cnt').textContent=s.n;$('bar').hidden=!s.n;document.body.classList.toggle('has',!!s.n);
@@ -170,23 +166,35 @@ function paint(){
   $('lines').innerHTML=h||'<p class="note">கார்ட் காலியாக உள்ளது.</p>';
 }
 function open(){if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+var API='https://www.wixapis.com',CID='2eb49247-2b3b-44dd-9e28-65fd8560b7c7',STORES='215238eb-22a5-4c36-9e7b-e7c08025e04e';
+function wx(path,body,tk){return fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json',Authorization:tk||''},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text()}).then(function(x){return x?JSON.parse(x):{}})}
+/* items: {index: qty}. Opens the secure Wix checkout; the order is created in Wix automatically once paid. */
+function checkout(items,btn,errEl){
+  var list=[];for(var i in items)if(P[i])list.push({quantity:items[i],catalogReference:{catalogItemId:P[i].id,appId:STORES}});
+  if(!list.length)return;
+  var label=btn.textContent;btn.disabled=true;btn.textContent='பணம் செலுத்தும் பக்கம் திறக்கிறது…';if(errEl)errEl.textContent='';
+  var tk;
+  wx('/oauth2/token',{clientId:CID,grantType:'anonymous'}).then(function(j){tk=j.access_token;return wx('/ecom/v2/carts/current/add-line-items',{catalogItems:list},tk)})
+  .then(function(){return wx('/ecom/v1/carts/current/create-checkout',{channelType:'WEB'},tk)})
+  .then(function(c){if(!c.checkoutId)throw new Error('no checkout');return wx('/headless/v1/redirect-session',{ecomCheckout:{checkoutId:c.checkoutId},callbacks:{postFlowUrl:BASE,thankYouPageUrl:BASE+'?paid=1'}},tk)})
+  .then(function(r){var u=r.redirectSession&&r.redirectSession.fullUrl;if(!u)throw new Error('no url');location.href=u})
+  .catch(function(){
+    btn.disabled=false;btn.textContent=label;
+    var names=[];for(var i in items)if(P[i])names.push(P[i].n+' × '+items[i]);
+    var msg='இணைப்பில் சிக்கல். மீண்டும் முயலவும், அல்லது <a href="'+wa('வணக்கம்! ஆன்லைனில் பணம் செலுத்த முடியவில்லை. இந்தப் புத்தகங்கள் வேண்டும்:\n'+names.join('\n'))+'">WhatsApp-ல் உதவி பெறுங்கள்</a>.';
+    if(errEl)errEl.innerHTML=msg;
+  });
+}
 grid.addEventListener('click',function(e){
-  var c=e.target.closest('.card');if(!c)return;var i=c.dataset.i,p=P[i];
-  if(e.target.closest('.add')){cart[i]=(cart[i]||0)+1;save();paint()}
-  else if(e.target.closest('.wa1')){e.preventDefault();var one={};one[i]=1;location.href=wa('வணக்கம்! இந்தப் புத்தகத்தை ஆர்டர் செய்ய விரும்புகிறேன்: '+p.n+' ('+rs(p.p)+')\n'+p.u+'\nஆன்லைனில் செலுத்த: '+link(one))}
+  var c=e.target.closest('.card');if(!c)return;var i=c.dataset.i;
+  var bb=e.target.closest('.buy');
+  if(bb){var one={};one[i]=1;var er=c.querySelector('.err1');if(!er){er=document.createElement('p');er.className='err1';er.setAttribute('role','alert');bb.insertAdjacentElement('afterend',er)}checkout(one,bb,er)}
+  else if(e.target.closest('.add')){cart[i]=(cart[i]||0)+1;save();paint()}
 });
 $('lines').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var i=b.dataset.i;cart[i]=(cart[i]||0)+Number(b.dataset.d);if(cart[i]<=0)delete cart[i];save();paint()});
 $('cartBtn').onclick=open;$('barGo').onclick=open;$('close').onclick=function(){dlg.close?dlg.close():dlg.removeAttribute('open')};
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
-$('form').addEventListener('submit',function(e){
-  e.preventDefault();var s=sum();if(!s.n)return;
-  var t='வணக்கம்! பின்வரும் புத்தகங்களை ஆர்டர் செய்ய விரும்புகிறேன்:\n',j=1;
-  for(var i in cart){t+=(j++)+'. '+P[i].n+' × '+cart[i]+' = '+rs(P[i].p*cart[i])+'\n'}
-  t+='மொத்தம்: '+rs(s.t);var nm=$('nm').value.trim(),ad=$('ad').value.trim();
-  if(nm)t+='\nபெயர்: '+nm;if(ad)t+='\nமுகவரி: '+ad;
-  t+='\nஆன்லைனில் செலுத்த (UPI/Card): '+link(cart);
-  location.href=wa(t);
-});
+$('payOnline').onclick=function(){if(sum().n)checkout(cart,this,$('payErr'))};
 function filter(){
   var q=$('q').value.trim().toLowerCase(),n=0;
   cards.forEach(function(c){var ok=(k==='all'||(' '+c.dataset.c+' ').indexOf(' '+k+' ')>-1)&&(!q||P[c.dataset.i].n.toLowerCase().indexOf(q)>-1);c.hidden=!ok;if(ok)n++});
@@ -198,18 +206,8 @@ $('sort').addEventListener('change',function(){
   var v=this.value,f={pop:function(a,b){return a.dataset.i-b.dataset.i},lo:function(a,b){return a.dataset.p-b.dataset.p},hi:function(a,b){return b.dataset.p-a.dataset.p},off:function(a,b){return b.dataset.o-a.dataset.o}}[v];
   cards.slice().sort(f).forEach(function(c){grid.appendChild(c)});
 });
-var API='https://www.wixapis.com',CID='2eb49247-2b3b-44dd-9e28-65fd8560b7c7',STORES='215238eb-22a5-4c36-9e7b-e7c08025e04e';
-function wx(path,body,tk){return fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json',Authorization:tk||''},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.text()}).then(function(x){return x?JSON.parse(x):{}})}
-$('payOnline').onclick=function(){
-  var s=sum(),b=this;if(!s.n)return;b.disabled=true;b.textContent='பாதுகாப்பான பணம் செலுத்தும் பக்கம் திறக்கிறது…';$('payErr').textContent='';
-  var items=[];for(var i in cart)items.push({quantity:cart[i],catalogReference:{catalogItemId:P[i].id,appId:STORES}});
-  var back=location.href.split('?')[0].split('#')[0],tk;
-  wx('/oauth2/token',{clientId:CID,grantType:'anonymous'}).then(function(j){tk=j.access_token;return wx('/ecom/v2/carts/current/add-line-items',{catalogItems:items},tk)})
-  .then(function(){return wx('/ecom/v1/carts/current/create-checkout',{channelType:'WEB'},tk)})
-  .then(function(c){if(!c.checkoutId)throw new Error('no checkout');return wx('/headless/v1/redirect-session',{ecomCheckout:{checkoutId:c.checkoutId},callbacks:{postFlowUrl:back,thankYouPageUrl:back}},tk)})
-  .then(function(r){var u=r.redirectSession&&r.redirectSession.fullUrl;if(!u)throw new Error('no url');location.href=u})
-  .catch(function(){b.disabled=false;b.textContent='ஆன்லைனில் பணம் செலுத்து (UPI / Card) →';$('payErr').textContent='இணைப்பில் சிக்கல். மீண்டும் முயலவும் அல்லது கீழே WhatsApp-ல் ஆர்டர் செய்யவும்.'});
-};
+$('fab').href=wa('வணக்கம்! புத்தகம் பற்றி ஒரு சந்தேகம்: ');
+(function(){if(!/[?&]paid=1/.test(location.search))return;cart={};save();try{history.replaceState(null,'',BASE)}catch(e){}var d=document.createElement('div');d.className='ok';d.setAttribute('role','status');d.innerHTML='<button type="button" aria-label="மூடு">×</button>✅ நன்றி! உங்கள் ஆர்டர் உறுதியானது. 1–3 நாளில் புத்தகம் அனுப்பப்படும். விவரம் உங்கள் மின்னஞ்சலுக்கு வரும்.';d.querySelector('button').onclick=function(){d.remove()};document.body.appendChild(d)})();
 paint();
 (function(){var o=new URLSearchParams(location.search).get('o');if(!o)return;var q=dec(o);if(!q){try{history.replaceState(null,'',BASE)}catch(e){}return}var c={};
   q.split('.').forEach(function(x){var m=x.split('-'),k=m[0],n=Math.max(1,Math.min(20,parseInt(m[1],10)||1));P.forEach(function(p){if(p.id.slice(0,8)===k)c[p.i]=n})});
