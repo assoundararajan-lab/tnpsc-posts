@@ -64,7 +64,7 @@ for i, p in enumerate(items):
 <a class="ph" href="{e(url)}" aria-label="{e(p['name'])}"><img src="{img(im,300,384)}" srcset="{img(im,300,384)} 300w, {img(im,450,576)} 450w" sizes="(min-width:960px) 220px, 46vw" width="300" height="384" alt="{e(p['name'])}" {lazy}>{f'<span class="rib">{e(rib)}</span>' if rib else ''}{f'<span class="off">-{off}%</span>' if off else ''}</a>
 <h3>{e(p['name'])}</h3>
 <div class="pr"><b>₹{money(price)}</b>{f'<s>₹{money(mrp)}</s>' if mrp > price else ''}</div>
-{'<button class="buy" type="button">இப்போதே வாங்கு →</button><button class="add" type="button">கூடையில் சேர் +</button>' if instock else '<p class="oos">ஸ்டாக் இல்லை</p>'}
+{'<button class="buy" type="button">இப்போதே வாங்கு →</button><button class="add" type="button">Add to Cart +</button>' if instock else '<p class="oos">ஸ்டாக் இல்லை</p>'}
 <a class="pay" href="{e(url)}">புத்தக விவரம் பார்க்க</a>
 </article>""")
     ld.append({"@type": "ListItem", "position": i + 1, "url": url, "name": p["name"]})
